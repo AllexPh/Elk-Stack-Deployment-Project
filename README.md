@@ -13,7 +13,7 @@ https://drive.google.com/file/d/1PLIXOBaLz3JwCcZ2CSV-rtztETWlXqUC/view?usp=shari
 
 These files have been tested and used to generate a live ELK deployment on Azure. They can be used to either recreate the entire deployment pictured above. Alternatively, select portions of the YAML file may be used to install only certain pieces of it, such as Filebeat.
 
-  - _TODO: Enter the playbook file._
+  Enter the playbook file._
 
 This document contains the following details:
 - Description of the Topologu
@@ -58,7 +58,7 @@ A summary of the access policies in place can be found in the table below.
 
 | Name             | Publicly Accessible | Allowed IP Addresses |
 |-----------------|-----------------------|----------------------|
-| Jump Box      | Yes                          | 73.237.148.154   |
+| Jump Box      | Yes                          | [Public IP]   |
 |  DVWA 1        |  No                          |  10.0.0.1 - 254     |
 |  DVWA 2        |  No                          |   10.0.0.1 - 254    |
 |  ELK  VM       |  No                          | 10.1.0.1 - 254      |
