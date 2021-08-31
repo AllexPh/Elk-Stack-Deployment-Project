@@ -111,12 +111,19 @@ YAML (.yml) files are playbook files that can be run with Ansible. Typically, it
 
 - _Which file do you update to make Ansible run the playbook on a specific machine? How do I specify which machine to install the ELK server on versus which to install Filebeat on?_
 You have to update the host file in order to run the playbook on a specific machine. You can do that by typing this command: ansible-playbook install_elk.yml elk and ansible-playbook install_filebeat.yml webserver
+
 $ cd /etc/ansible
+
 $ nano hosts 
+
 [webservers]
+
 10.0.0.7
+
 10.0.0.8
+
 [elk]
+
 10.1.0.4
 
 
@@ -124,7 +131,11 @@ $ nano hosts
 You have to run: curl http://[Public_IP]:5601. That is the address or domain for KIbana. 
 
 As a **Bonus**, provide the specific commands the user will need to run to download the playbook, update the files, etc._
+
 sudo docker start (the container name)
+
 sudo docker ps
+
 sudo docker exec -ti (the container name) bash
+
 sudo ansible-playbook ( the .yml file you would like to run)
