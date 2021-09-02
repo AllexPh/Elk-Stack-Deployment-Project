@@ -135,5 +135,3 @@ sudo docker ps
 sudo docker exec -ti (the container name) bash
 
 sudo ansible-playbook ( the .yml file you would like to run)
-
-https://drive.google.com/file/d/1u5hCG-PP4TnwA6PF4OnHCwTqJSXk94i0/view?usp=sharing
