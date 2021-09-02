@@ -49,11 +49,11 @@ The configuration details of each machine may be found below.
 
 The machines on the internal network are not exposed to the public Internet. 
 
-Only the Jump Box machine can accept connections from the Internet. Access to this machine is only allowed from the following IP addresses: 73.237.148.154
+Only the Jump Box machine can accept connections from the Internet. Access to this machine is only allowed from home network IP.
 
 
 Machines within the network can only be accessed by _____.
-They can only be accessed by each other. The DVWA 1 and DVWA 2 VMs send traffic to the ELK server. 
+They can only be accessed from the home network and by each other. The DVWA 1 and DVWA 2 VMs send traffic to the ELK server. 
 
 A summary of the access policies in place can be found in the table below.
 
@@ -66,19 +66,16 @@ A summary of the access policies in place can be found in the table below.
 
 ### Elk Configuration
 
-Ansible was used to automate configuration of the ELK machine. No configuration was performed manually, which is advantageous because...
+Ansible was used to automate configuration of the ELK machine. No configuration was performed manually, which is advantageous because it minimizes the number of potential errors and also help save time. 
 What is the main advantage of automating configuration with Ansible?
-Ansible offers help for coordinating turn of events and tasks in contemporary test-driven application plan. It gives a steady climate to the turn of events and tasks group, consequently prompting smooth organization. Ansible robotization helps impressively with the portrayal of Infrastructure as Code (IAC).
+Using automating configuration with Ansible help IT administrators to avoid the daily harwork, help them save time, and use the free time that they have on important task that will help and add values to the company. Ansible offers help for coordinating turn of events and tasks in contemporary test-driven application plan. It gives a steady climate to the turn of events and tasks group, consequently prompting smooth organization. Ansible robotization helps impressively with the portrayal of Infrastructure as Code (IAC).  
 
 The playbook implements the following tasks:
-* Ansible is an open-source tool.
-* Extremely easy to set up and use. No unique coding abilities are important to utilize Ansible's playbooks
-* Ansible allows you to demonstrate even exceptionally complex IT work processes. 
-* You can arrange the whole application climate regardless of where it's sent. You can likewise redo it dependent on your necessities. 
-* You don't have to introduce some other programming or firewall ports on the customer frameworks you need to robotize. You additionally don't need to set up a different administration structure. 
-* Because you don't have to introduce any additional product, there's more space for application assets on your worker.
-
-
+* Install Docker
+* Configure Webserver
+* Install Elk Sever
+* Install Filebeat
+* Install Metricbeat 
 
 The following screenshot displays the result of running `docker ps` after successfully configuring the ELK instance.
 https://drive.google.com/file/d/1nf3S9Psdg9LOL59B2-S-jsBWYTqFNSv2/view?usp=sharing
@@ -91,12 +88,11 @@ This ELK server is configured to monitor the following machines:
 We have installed the following Beats on these machines:
 - Filebeat
 - Metricbeat
-- Packetbeat
+
 
 These Beats allow us to collect the following information from each machine:
-* Filebeat permits the ELK Server to screen and save records of logs.
-* Metricbeat permits the ELK Server to screen important utilization measurements like CPU use, memory use, and screens what is coming all through the worker at indicated minutes on schedule.
-* Packet beats is use to generate a trace of all activity that takes place on the network, in case of need for later analysis. I also used to collect packets that pass through the NIC, similar to Wireshark.
+* Filebeat permits the ELK Server to screen and save records of logs while providing a graphical user interface to monitor the data.
+* Metricbeat permits the ELK Server to screen important utilization measurements like CPU use, memory use, and screens what is coming all through the worker at indicated minutes on schedule. After the screenings all the information are sent to Elasticsearch and Logstash.
 
 
 ### Using the Playbook
@@ -114,23 +110,21 @@ YAML (.yml) files are playbook files that can be run with Ansible. Typically, it
 - _Which file do you update to make Ansible run the playbook on a specific machine? How do I specify which machine to install the ELK server on versus which to install Filebeat on?_
 You have to update the host file in order to run the playbook on a specific machine. You can do that by typing this command: ansible-playbook install_elk.yml elk and ansible-playbook install_filebeat.yml webserver
 
-$ cd /etc/ansible
+* $ cd /etc/ansible 
+* $ nano hosts (to update the hosts file and add the webservers IP and the Elk IP)
+* [webservers]
+  10.0.0.7
+  10.0.0.8
+* [elk]
+  10.1.0.4
 
-$ nano hosts 
-
-[webservers]
-
-10.0.0.7
-
-10.0.0.8
-
-[elk]
-
-10.1.0.4
-
+* Update ElkServer-IP inside of each configuration file
+   * Replce Kibana localhost with ELK Server local IP (10.1.0.4)
+   * Replace Elasticsearch localhost with ELK Server local IP (10.1.0.4)
+   
 
 - Which URL do you navigate to in order to check that the ELK server is running?
-You have to run: curl http://[Public_IP]:5601. That is the address or domain for KIbana. 
+You have to run: curl http://[Elk-Public-IP]:5601. (That is the address or domain for KIbana)
 
 As a **Bonus**, provide the specific commands the user will need to run to download the playbook, update the files, etc._
 
